@@ -1,0 +1,30 @@
+<div class="theme-switcher">
+  <button class="theme-toggle" (click)="toggle()" [attr.aria-label]="'Switch theme'">
+    <span class="theme-icon">{{ themeService.currentTheme().icon }}</span>
+    <span class="theme-label">{{ themeService.currentTheme().name }}</span>
+    <span class="chevron" [class.open]="isOpen()">▾</span>
+  </button>
+
+  @if (isOpen()) {
+    <div class="theme-dropdown">
+      <div class="dropdown-header">Choose Theme</div>
+      @for (theme of themeService.themes; track theme.id) {
+        <button
+          class="theme-option"
+          [class.active]="theme.id === themeService.currentTheme().id"
+          (click)="selectTheme(theme)">
+          <span class="option-icon">{{ theme.icon }}</span>
+          <span class="option-name">{{ theme.name }}</span>
+          <div class="color-preview">
+            <span class="preview-dot" [style.background]="theme.colors['--gold']"></span>
+            <span class="preview-dot" [style.background]="theme.colors['--dark-brown']"></span>
+            <span class="preview-dot" [style.background]="theme.colors['--cream']"></span>
+          </div>
+          @if (theme.id === themeService.currentTheme().id) {
+            <span class="check-mark">✓</span>
+          }
+        </button>
+      }
+    </div>
+  }
+</div>

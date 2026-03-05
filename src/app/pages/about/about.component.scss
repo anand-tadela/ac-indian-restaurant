@@ -1,13 +1,13 @@
 .about-hero {
   position: relative;
   padding: 140px 0 60px;
-  background: linear-gradient(135deg, #2c1810, #1a0a05);
+  background: linear-gradient(135deg, var(--dark-brown), var(--dark-brown-deep));
   text-align: center;
 
   .hero-overlay {
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse at center, rgba(184, 134, 11, 0.12) 0%, transparent 70%);
+    background: radial-gradient(ellipse at center, var(--overlay-accent-subtle) 0%, transparent 70%);
   }
 
   .container { position: relative; z-index: 2; }
@@ -28,7 +28,7 @@
     padding: 8px 20px;
     background: rgba(184, 134, 11, 0.1);
     border-radius: 50px;
-    color: #b8860b;
+    color: var(--primary);
     font-size: 0.9rem;
     font-weight: 600;
     margin-bottom: 16px;
@@ -36,12 +36,12 @@
 
   h2 {
     font-size: 2.5rem;
-    color: #2c1810;
+    color: var(--dark-brown);
     margin-bottom: 20px;
   }
 
   p {
-    color: #6b6b6b;
+    color: var(--text-light);
     line-height: 1.8;
     margin-bottom: 16px;
     font-size: 0.95rem;
@@ -55,7 +55,7 @@
 }
 
 .visual-card {
-  background: white;
+  background: var(--card-bg);
   border-radius: 16px;
   padding: 24px;
   display: flex;
@@ -67,8 +67,8 @@
   &:hover { transform: translateX(5px); }
 
   span { font-size: 2rem; }
-  h4 { font-size: 1rem; color: #2c1810; margin-bottom: 2px; }
-  p { font-size: 0.85rem; color: #6b6b6b; margin: 0; }
+  h4 { font-size: 1rem; color: var(--dark-brown); margin-bottom: 2px; }
+  p { font-size: 0.85rem; color: var(--text-light); margin: 0; }
 }
 
 .section-header {
@@ -80,13 +80,13 @@
     padding: 6px 20px;
     background: rgba(184, 134, 11, 0.1);
     border-radius: 50px;
-    color: #b8860b;
+    color: var(--primary);
     font-size: 0.85rem;
     font-weight: 600;
     margin-bottom: 12px;
   }
 
-  h2 { font-size: 2.5rem; color: #2c1810; }
+  h2 { font-size: 2.5rem; color: var(--dark-brown); }
 }
 
 .values-grid {
@@ -98,7 +98,7 @@
 .value-card {
   text-align: center;
   padding: 40px 24px;
-  background: white;
+  background: var(--card-bg);
   border-radius: 16px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
   transition: all 0.3s ease;
@@ -106,8 +106,8 @@
   &:hover { transform: translateY(-5px); }
 
   .value-icon { font-size: 2.5rem; display: block; margin-bottom: 16px; }
-  h3 { font-size: 1.15rem; margin-bottom: 8px; color: #2c1810; }
-  p { font-size: 0.9rem; color: #6b6b6b; line-height: 1.6; }
+  h3 { font-size: 1.15rem; margin-bottom: 8px; color: var(--dark-brown); }
+  p { font-size: 0.9rem; color: var(--text-light); line-height: 1.6; }
 }
 
 .traditions-grid {
@@ -117,7 +117,7 @@
 }
 
 .tradition-card {
-  background: white;
+  background: var(--card-bg);
   border-radius: 16px;
   padding: 32px;
   text-align: center;
@@ -127,12 +127,12 @@
   &:hover { transform: translateY(-4px); }
 
   .tradition-icon { font-size: 2.5rem; display: block; margin-bottom: 12px; }
-  h3 { font-size: 1.15rem; color: #2c1810; margin-bottom: 8px; }
-  p { font-size: 0.9rem; color: #6b6b6b; line-height: 1.6; }
+  h3 { font-size: 1.15rem; color: var(--dark-brown); margin-bottom: 8px; }
+  p { font-size: 0.9rem; color: var(--text-light); line-height: 1.6; }
 }
 
 .about-cta {
-  background: linear-gradient(135deg, #2c1810, #1a0a05);
+  background: linear-gradient(135deg, var(--dark-brown), var(--dark-brown-deep));
   padding: 80px 0;
   text-align: center;
 

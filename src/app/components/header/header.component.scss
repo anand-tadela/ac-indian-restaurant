@@ -9,7 +9,7 @@
   background: transparent;
 
   &.scrolled {
-    background: rgba(44, 24, 16, 0.95);
+    background: var(--nav-scrolled-bg);
     backdrop-filter: blur(10px);
     padding: 10px 0;
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
@@ -42,7 +42,7 @@
     font-family: 'Playfair Display', serif;
     font-size: 1.5rem;
     font-weight: 800;
-    color: #d4af37;
+    color: var(--gold);
     line-height: 1;
   }
 
@@ -57,7 +57,7 @@
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 24px;
 
   a {
     color: rgba(255, 255, 255, 0.85);
@@ -73,12 +73,12 @@
       left: 0;
       width: 0;
       height: 2px;
-      background: #d4af37;
+      background: var(--gold);
       transition: width 0.3s ease;
     }
 
     &:hover, &.active {
-      color: #d4af37;
+      color: var(--gold);
       &::after { width: 100%; }
     }
   }
@@ -86,12 +86,18 @@
 
 .order-btn {
   position: relative;
+  padding: 8px 18px !important;
+  white-space: nowrap;
+  gap: 6px;
+
+  &::after { display: none !important; }
+  &:hover { color: white !important; }
 
   .cart-badge {
     position: absolute;
     top: -6px;
     right: -6px;
-    background: #8b0000;
+    background: var(--red);
     color: white;
     font-size: 0.7rem;
     width: 20px;
@@ -134,7 +140,7 @@
     top: 70px;
     left: 0;
     right: 0;
-    background: rgba(44, 24, 16, 0.98);
+    background: var(--nav-mobile-bg);
     flex-direction: column;
     padding: 24px;
     gap: 16px;

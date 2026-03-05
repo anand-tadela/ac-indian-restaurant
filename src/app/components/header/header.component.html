@@ -13,6 +13,7 @@
       <a routerLink="/menu" routerLinkActive="active" (click)="closeMobileMenu()">Menu</a>
       <a routerLink="/about" routerLinkActive="active" (click)="closeMobileMenu()">About</a>
       <a routerLink="/contact" routerLinkActive="active" (click)="closeMobileMenu()">Contact</a>
+      <app-theme-switcher></app-theme-switcher>
       <a routerLink="/order" class="btn btn-primary btn-sm order-btn" (click)="closeMobileMenu()">
         🛒 Order Online
         @if (cartService.itemCount() > 0) {
