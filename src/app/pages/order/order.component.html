@@ -1,0 +1,88 @@
+<section class="order-hero">
+  <div class="hero-overlay"></div>
+  <div class="container">
+    <h1>Order Online</h1>
+    <p>Choose your favorites and we will have them ready for you</p>
+  </div>
+</section>
+
+<section class="order-content section">
+  <div class="container">
+    <div class="order-layout">
+      <!-- Menu Items -->
+      <div class="order-menu">
+        @for (category of categories; track category) {
+          <div class="order-category">
+            <h2 class="category-title">{{ getCategoryEmoji(category) }} {{ category }}</h2>
+            <div class="category-items">
+              @for (item of menuItems; track item.id) {
+                @if (item.category === category) {
+                  <div class="order-item">
+                    <img class="item-emoji" [src]="item.image" [alt]="item.name" loading="lazy">
+                    <div class="item-info">
+                      <div class="item-name-row">
+                        <h3>{{ item.name }}</h3>
+                        <div class="item-tags">
+                          @if (item.isVegetarian) { <span class="mini-badge veg">V</span> }
+                          @if (item.isSpicy) { <span class="mini-badge spicy">🌶️</span> }
+                        </div>
+                      </div>
+                      <p>{{ item.description }}</p>
+                    </div>
+                    <div class="item-action">
+                      <span class="item-price">{{ item.price | currency }}</span>
+                      <button class="btn btn-primary btn-sm" (click)="addToCart(item)">+ Add</button>
+                    </div>
+                  </div>
+                }
+              }
+            </div>
+          </div>
+        }
+      </div>
+
+      <!-- Cart Sidebar -->
+      <aside class="cart-sidebar" [class.has-items]="cartService.itemCount() > 0">
+        <div class="cart-header">
+          <h2>🛒 Your Cart</h2>
+          <span class="cart-count">{{ cartService.itemCount() }} items</span>
+        </div>
+
+        @if (cartService.itemCount() === 0) {
+          <div class="cart-empty">
+            <span>🍽️</span>
+            <p>Your cart is empty</p>
+            <p class="hint">Add items from the menu</p>
+          </div>
+        } @else {
+          <div class="cart-items">
+            @for (cartItem of cartService.items(); track cartItem.menuItem.id) {
+              <div class="cart-item">
+                <div class="cart-item-info">
+                  <span class="cart-item-name">{{ cartItem.menuItem.name }}</span>
+                  <span class="cart-item-price">{{ cartItem.menuItem.price * cartItem.quantity | currency }}</span>
+                </div>
+                <div class="cart-item-controls">
+                  <button class="qty-btn" (click)="decrementQuantity(cartItem.menuItem.id)">−</button>
+                  <span class="qty">{{ cartItem.quantity }}</span>
+                  <button class="qty-btn" (click)="incrementQuantity(cartItem.menuItem.id)">+</button>
+                  <button class="remove-btn" (click)="removeFromCart(cartItem.menuItem.id)">✕</button>
+                </div>
+              </div>
+            }
+          </div>
+
+          <div class="cart-summary">
+            <div class="summary-row"><span>Subtotal</span><span>{{ cartService.subtotal() | currency }}</span></div>
+            <div class="summary-row"><span>Tax (8%)</span><span>{{ cartService.tax() | currency }}</span></div>
+            <div class="summary-row total"><span>Total</span><span>{{ cartService.total() | currency }}</span></div>
+          </div>
+
+          <button class="btn btn-primary checkout-btn" (click)="proceedToCheckout()">
+            Proceed to Checkout →
+          </button>
+        }
+      </aside>
+    </div>
+  </div>
+</section>

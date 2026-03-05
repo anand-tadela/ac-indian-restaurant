@@ -1,0 +1,75 @@
+<section class="menu-hero">
+  <div class="hero-overlay"></div>
+  <div class="container">
+    <h1>Our Menu</h1>
+    <p>Authentic South Indian delicacies crafted with love</p>
+  </div>
+</section>
+
+<section class="menu-content section">
+  <div class="container">
+    <div class="menu-filters">
+      <div class="search-bar">
+        <span class="search-icon">🔍</span>
+        <input type="text" class="search-input" placeholder="Search dishes..." (input)="onSearch($event)">
+      </div>
+      <button class="veg-toggle" [class.active]="showVegOnly()" (click)="toggleVegFilter()">
+        🌱 Vegetarian Only
+      </button>
+    </div>
+
+    <div class="category-tabs">
+      @for (cat of categories; track cat) {
+        <button class="category-tab" [class.active]="activeCategory() === cat" (click)="filterByCategory(cat)">
+          {{ getCategoryEmoji(cat) }} {{ cat }}
+        </button>
+      }
+    </div>
+
+    @if (filteredItems.length === 0) {
+      <div class="empty-state">
+        <span class="empty-icon">🍽️</span>
+        <h3>No dishes found</h3>
+        <p>Try adjusting your search or filters</p>
+      </div>
+    } @else {
+      <div class="menu-grid">
+        @for (item of filteredItems; track item.id) {
+          <div class="menu-item-card">
+            <div class="item-image">
+              <img [src]="item.image" [alt]="item.name" loading="lazy">
+              <div class="item-badges">
+                @if (item.isVegetarian) {
+                  <span class="badge badge-veg">🌱 Veg</span>
+                } @else {
+                  <span class="badge badge-spicy" style="background:#fff3e0;color:#e65100;">Non-Veg</span>
+                }
+                @if (item.isSpicy) {
+                  <span class="badge badge-spicy">🌶️ Spicy</span>
+                }
+                @if (item.isPopular) {
+                  <span class="badge badge-popular">⭐ Popular</span>
+                }
+              </div>
+            </div>
+            <div class="item-details">
+              <div class="item-header">
+                <h3>{{ item.name }}</h3>
+                <span class="item-price">{{ item.price | currency }}</span>
+              </div>
+              <p class="item-desc">{{ item.description }}</p>
+              <span class="item-category">{{ item.category }}</span>
+              <button class="btn btn-primary btn-sm add-btn" (click)="addToCart(item)">
+                @if (addedToCartId() === item.id) {
+                  ✓ Added!
+                } @else {
+                  Add to Cart
+                }
+              </button>
+            </div>
+          </div>
+        }
+      </div>
+    }
+  </div>
+</section>

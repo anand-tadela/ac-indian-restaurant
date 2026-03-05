@@ -1,0 +1,30 @@
+<nav class="navbar" [class.scrolled]="isScrolled()">
+  <div class="nav-container">
+    <a routerLink="/" class="nav-brand" (click)="closeMobileMenu()">
+      <span class="brand-icon">🪔</span>
+      <div class="brand-text">
+        <span class="brand-name">A&amp;C</span>
+        <span class="brand-tagline">Indian Restaurant</span>
+      </div>
+    </a>
+
+    <div class="nav-links" [class.active]="isMobileMenuOpen()">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="closeMobileMenu()">Home</a>
+      <a routerLink="/menu" routerLinkActive="active" (click)="closeMobileMenu()">Menu</a>
+      <a routerLink="/about" routerLinkActive="active" (click)="closeMobileMenu()">About</a>
+      <a routerLink="/contact" routerLinkActive="active" (click)="closeMobileMenu()">Contact</a>
+      <a routerLink="/order" class="btn btn-primary btn-sm order-btn" (click)="closeMobileMenu()">
+        🛒 Order Online
+        @if (cartService.itemCount() > 0) {
+          <span class="cart-badge">{{ cartService.itemCount() }}</span>
+        }
+      </a>
+    </div>
+
+    <button class="mobile-toggle" (click)="toggleMobileMenu()" [attr.aria-label]="'Toggle menu'">
+      <span class="bar" [class.open]="isMobileMenuOpen()"></span>
+      <span class="bar" [class.open]="isMobileMenuOpen()"></span>
+      <span class="bar" [class.open]="isMobileMenuOpen()"></span>
+    </button>
+  </div>
+</nav>

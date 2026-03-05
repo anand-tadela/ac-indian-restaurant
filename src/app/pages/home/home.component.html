@@ -1,0 +1,145 @@
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-overlay"></div>
+  <div class="container hero-content">
+    <span class="hero-badge">🪔 Authentic South Indian Cuisine</span>
+    <h1>Welcome to <span class="gold">A&amp;C</span> Indian Restaurant</h1>
+    <p class="hero-subtitle">Experience the rich traditions and bold flavors of South India, crafted with love and served with warmth.</p>
+    <div class="hero-actions">
+      <a routerLink="/order" class="btn btn-primary btn-lg">Order Online 🛒</a>
+      <a routerLink="/menu" class="btn btn-outline btn-lg">View Menu</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-number">34+</span><span class="stat-label">Dishes</span></div>
+      <div class="stat"><span class="stat-number">4.9</span><span class="stat-label">Rating</span></div>
+      <div class="stat"><span class="stat-number">100%</span><span class="stat-label">Fresh</span></div>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <span>Scroll to explore</span>
+    <div class="scroll-arrow">↓</div>
+  </div>
+</section>
+
+<!-- Features -->
+<section class="features section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-badge">Why Choose Us</span>
+      <h2>A Taste of South India</h2>
+      <div class="spice-divider"><span>🌿</span></div>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <span class="feature-icon">🍛</span>
+        <h3>Authentic Recipes</h3>
+        <p>Traditional recipes passed down through generations of South Indian families.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🌿</span>
+        <h3>Fresh Ingredients</h3>
+        <p>Locally sourced produce and imported spices for the most authentic flavors.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">👨‍🍳</span>
+        <h3>Expert Chefs</h3>
+        <p>Our chefs bring decades of experience from the finest kitchens of South India.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🚗</span>
+        <h3>Fast Delivery</h3>
+        <p>Order online and enjoy hot, fresh South Indian cuisine at your doorstep.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Popular Dishes -->
+<section class="popular section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-badge">Customer Favorites</span>
+      <h2>Popular Dishes</h2>
+      <div class="spice-divider"><span>🌶️</span></div>
+    </div>
+    <div class="dishes-grid">
+      @for (item of popularItems; track item.id) {
+        <div class="dish-card">
+          <div class="dish-image">
+            <img [src]="item.image" [alt]="item.name" loading="lazy">
+            @if (item.isVegetarian) {
+              <span class="badge badge-veg">🌱 Veg</span>
+            }
+            @if (item.isSpicy) {
+              <span class="badge badge-spicy">🌶️ Spicy</span>
+            }
+          </div>
+          <div class="dish-info">
+            <h3>{{ item.name }}</h3>
+            <p>{{ item.description }}</p>
+            <div class="dish-footer">
+              <span class="dish-price">{{ item.price | currency }}</span>
+              <button class="btn btn-primary btn-sm" (click)="addToCart(item)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+    <div class="section-cta">
+      <a routerLink="/menu" class="btn btn-outline">View Full Menu →</a>
+    </div>
+  </div>
+</section>
+
+<!-- Culture Section -->
+<section class="culture section">
+  <div class="container">
+    <div class="culture-grid">
+      <div class="culture-text">
+        <span class="section-badge">Our Heritage</span>
+        <h2>South Indian Culinary Traditions</h2>
+        <p>South Indian cuisine is a celebration of flavors, colors, and centuries-old traditions. From the crispy dosas of Tamil Nadu to the aromatic biryanis of Hyderabad, every dish tells a story of cultural richness.</p>
+        <p>At A&amp;C, we honor these traditions while bringing a modern dining experience that delights every sense.</p>
+        <a routerLink="/about" class="btn btn-primary">Learn Our Story →</a>
+      </div>
+      <div class="culture-cards">
+        <div class="culture-card"><span>🏛️</span><h4>Tamil Nadu</h4><p>Land of temples and dosas</p></div>
+        <div class="culture-card"><span>🥥</span><h4>Kerala</h4><p>God's own country cuisine</p></div>
+        <div class="culture-card"><span>🍚</span><h4>Hyderabad</h4><p>City of Nizami biryani</p></div>
+        <div class="culture-card"><span>🌶️</span><h4>Chettinad</h4><p>Spice capital of India</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="testimonials section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-badge">What Our Guests Say</span>
+      <h2>Testimonials</h2>
+      <div class="spice-divider"><span>⭐</span></div>
+    </div>
+    <div class="testimonials-grid">
+      @for (t of testimonials; track t.name) {
+        <div class="testimonial-card">
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <p class="quote">"{{ t.text }}"</p>
+          <span class="author">— {{ t.name }}</span>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <h2>Ready to Experience South India?</h2>
+    <p>Order online for pickup or delivery and enjoy authentic flavors at home.</p>
+    <div class="cta-actions">
+      <a routerLink="/order" class="btn btn-primary btn-lg">Order Now 🛒</a>
+      <a routerLink="/contact" class="btn btn-outline btn-lg">Contact Us</a>
+    </div>
+  </div>
+</section>

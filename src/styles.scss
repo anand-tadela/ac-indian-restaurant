@@ -1,1 +1,202 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&display=swap');
+
+:root {
+  --gold: #d4af37;
+  --gold-light: #e8c547;
+  --dark-brown: #2c1810;
+  --dark-brown-light: #3d2518;
+  --red: #8b0000;
+  --cream: #fdf5e6;
+  --cream-dark: #f5e6c8;
+  --primary: #b8860b;
+  --primary-dark: #8b6508;
+  --text-dark: #1a1a1a;
+  --text-light: #6b6b6b;
+  --border: #e0d5c0;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.12);
+  --radius: 12px;
+  --radius-lg: 20px;
+  --transition: all 0.3s ease;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-dark);
+  background: var(--cream);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section {
+  padding: 80px 0;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 32px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+  text-decoration: none;
+
+  &-primary {
+    background: linear-gradient(135deg, var(--gold), var(--primary));
+    color: white;
+    box-shadow: 0 4px 15px rgba(184, 134, 11, 0.3);
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(184, 134, 11, 0.4);
+    }
+  }
+
+  &-secondary {
+    background: var(--red);
+    color: white;
+
+    &:hover {
+      background: #a00000;
+      transform: translateY(-2px);
+    }
+  }
+
+  &-outline {
+    background: transparent;
+    border: 2px solid var(--gold);
+    color: var(--gold);
+
+    &:hover {
+      background: var(--gold);
+      color: white;
+    }
+  }
+
+  &-sm {
+    padding: 8px 20px;
+    font-size: 0.85rem;
+  }
+
+  &-lg {
+    padding: 18px 40px;
+    font-size: 1.05rem;
+  }
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 12px;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 600;
+
+  &-veg {
+    background: #e8f5e9;
+    color: #2e7d32;
+  }
+
+  &-spicy {
+    background: #fbe9e7;
+    color: #d84315;
+  }
+
+  &-popular {
+    background: #fff3e0;
+    color: #e65100;
+  }
+}
+
+.spice-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 16px 0;
+
+  &::before, &::after {
+    content: '';
+    height: 1px;
+    width: 60px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gold);
+  border-radius: 4px;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}

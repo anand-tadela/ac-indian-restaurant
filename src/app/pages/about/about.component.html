@@ -1,0 +1,88 @@
+<section class="about-hero">
+  <div class="hero-overlay"></div>
+  <div class="container">
+    <h1>Our Story</h1>
+    <p>The heart and soul behind A&amp;C Indian Restaurant</p>
+  </div>
+</section>
+
+<section class="about-story section">
+  <div class="container">
+    <div class="story-grid">
+      <div class="story-text">
+        <span class="story-badge">🪔 Since 2024</span>
+        <h2>A Journey of Flavors</h2>
+        <p>A&amp;C Indian Restaurant was born from a simple dream: to bring the authentic, uncompromised flavors of South India to our community. Our founders, driven by a passion for traditional cooking, set out to create a dining experience that honors centuries of culinary heritage.</p>
+        <p>Every dish we serve is a tribute to the diverse regions of South India — from the aromatic filter coffee of Tamil Nadu to the rich biryanis of Hyderabad, from Kerala's coconut-infused curries to the fiery Chettinad masalas.</p>
+        <p>We believe that great food brings people together. That is why we source the finest spices, use time-honored recipes, and pour love into every plate that leaves our kitchen.</p>
+      </div>
+      <div class="story-visuals">
+        <div class="visual-card"><span>🍳</span><h4>Our Kitchen</h4><p>Where tradition meets passion</p></div>
+        <div class="visual-card"><span>👨‍🍳</span><h4>Master Chefs</h4><p>Decades of culinary expertise</p></div>
+        <div class="visual-card"><span>🌿</span><h4>Fresh Spices</h4><p>Imported from India daily</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="values section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-badge">Our Values</span>
+      <h2>What We Stand For</h2>
+      <div class="spice-divider"><span>🌿</span></div>
+    </div>
+    <div class="values-grid">
+      <div class="value-card">
+        <span class="value-icon">🍛</span>
+        <h3>Authentic Flavors</h3>
+        <p>We never compromise on authenticity. Every spice blend is crafted to deliver the true taste of South India.</p>
+      </div>
+      <div class="value-card">
+        <span class="value-icon">🌱</span>
+        <h3>Fresh &amp; Natural</h3>
+        <p>We use fresh, locally sourced ingredients with no artificial preservatives or flavor enhancers.</p>
+      </div>
+      <div class="value-card">
+        <span class="value-icon">❤️</span>
+        <h3>Made with Love</h3>
+        <p>Each dish is prepared with care and attention, just like a home-cooked meal from a South Indian kitchen.</p>
+      </div>
+      <div class="value-card">
+        <span class="value-icon">🤝</span>
+        <h3>Community First</h3>
+        <p>We are proud to be part of this community and strive to create a welcoming space for everyone.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="traditions section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-badge">Regional Specialties</span>
+      <h2>South Indian Culinary Heritage</h2>
+      <div class="spice-divider"><span>🏛️</span></div>
+    </div>
+    <div class="traditions-grid">
+      @for (t of traditions; track t.title) {
+        <div class="tradition-card">
+          <span class="tradition-icon">{{ t.icon }}</span>
+          <h3>{{ t.title }}</h3>
+          <p>{{ t.description }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="about-cta">
+  <div class="container">
+    <h2>Come Taste the Tradition</h2>
+    <p>Visit us today or order online to experience authentic South Indian cuisine.</p>
+    <div class="cta-actions">
+      <a routerLink="/order" class="btn btn-primary btn-lg">Order Online 🛒</a>
+      <a routerLink="/contact" class="btn btn-outline btn-lg">Visit Us</a>
+    </div>
+  </div>
+</section>
