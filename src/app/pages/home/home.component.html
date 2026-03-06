@@ -1,18 +1,53 @@
 <!-- Hero -->
 <section class="hero">
-  <div class="hero-overlay"></div>
-  <div class="container hero-content">
-    <span class="hero-badge">🪔 Authentic South Indian Cuisine</span>
-    <h1>Welcome to <span class="gold">A&amp;C</span> Indian Restaurant</h1>
-    <p class="hero-subtitle">Experience the rich traditions and bold flavors of South India, crafted with love and served with warmth.</p>
-    <div class="hero-actions">
-      <a routerLink="/order" class="btn btn-primary btn-lg">Order Online 🛒</a>
-      <a routerLink="/menu" class="btn btn-outline btn-lg">View Menu</a>
+  <div class="hero-pattern"></div>
+  <div class="hero-glow hero-glow--left"></div>
+  <div class="hero-glow hero-glow--right"></div>
+  <div class="container hero-grid">
+    <div class="hero-left">
+      <div class="hero-badge-wrap">
+        <span class="hero-lamp">🪔</span>
+        <span class="hero-badge">Authentic South Indian Cuisine</span>
+      </div>
+      <h1>
+        <span class="hero-welcome">Welcome to</span>
+        <span class="hero-brand"><span class="gold">A&amp;C</span> Indian</span>
+        <span class="hero-brand">Restaurant</span>
+      </h1>
+      <p class="hero-subtitle">Experience the rich traditions and bold flavors of South India, crafted with love and served with warmth.</p>
+      <div class="hero-actions">
+        <a routerLink="/order" class="btn btn-primary btn-lg">Order Online 🛒</a>
+        <a routerLink="/menu" class="btn btn-outline btn-lg">View Menu</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-number">34<sup>+</sup></span>
+          <span class="stat-label">Dishes</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-number">4.9</span>
+          <span class="stat-label">Rating</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-number">100<small>%</small></span>
+          <span class="stat-label">Fresh</span>
+        </div>
+      </div>
     </div>
-    <div class="hero-stats">
-      <div class="stat"><span class="stat-number">34+</span><span class="stat-label">Dishes</span></div>
-      <div class="stat"><span class="stat-number">4.9</span><span class="stat-label">Rating</span></div>
-      <div class="stat"><span class="stat-number">100%</span><span class="stat-label">Fresh</span></div>
+    <div class="hero-right">
+      <div class="mandala-container">
+        <div class="mandala-ring mandala-ring--outer"></div>
+        <div class="mandala-ring mandala-ring--middle"></div>
+        <div class="mandala-ring mandala-ring--inner"></div>
+        <div class="mandala-center">🪔</div>
+        <span class="float-item" style="--delay:0s;--angle:0deg;--dist:160px">🍛</span>
+        <span class="float-item" style="--delay:0.4s;--angle:72deg;--dist:170px">🌶️</span>
+        <span class="float-item" style="--delay:0.8s;--angle:144deg;--dist:155px">🥥</span>
+        <span class="float-item" style="--delay:1.2s;--angle:216deg;--dist:165px">🌿</span>
+        <span class="float-item" style="--delay:1.6s;--angle:288deg;--dist:150px">🍚</span>
+      </div>
     </div>
   </div>
   <div class="scroll-indicator">
@@ -21,34 +56,71 @@
   </div>
 </section>
 
+<!-- Marquee Banner -->
+<div class="spice-marquee">
+  <div class="marquee-track">
+    <span>✦ Masala Dosa ✦ Hyderabadi Biryani ✦ Chettinad Chicken ✦ Filter Coffee ✦ Sambar Vada ✦ Idli ✦ Rasam ✦ Appam ✦ Kerala Fish Curry ✦ Pongal ✦ Uttapam ✦ Payasam ✦ Gulab Jamun ✦&nbsp;</span>
+    <span>✦ Masala Dosa ✦ Hyderabadi Biryani ✦ Chettinad Chicken ✦ Filter Coffee ✦ Sambar Vada ✦ Idli ✦ Rasam ✦ Appam ✦ Kerala Fish Curry ✦ Pongal ✦ Uttapam ✦ Payasam ✦ Gulab Jamun ✦&nbsp;</span>
+  </div>
+</div>
+
+<!-- Wave Divider -->
+<div class="wave-divider wave-divider--top">
+  <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+    <path d="M0,40 C240,100 480,0 720,50 C960,100 1200,20 1440,60 L1440,120 L0,120 Z"/>
+  </svg>
+</div>
+
 <!-- Features -->
 <section class="features section">
   <div class="container">
     <div class="section-header">
       <span class="section-badge">Why Choose Us</span>
       <h2>A Taste of South India</h2>
-      <div class="spice-divider"><span>🌿</span></div>
+      <div class="ornament-divider">
+        <span class="ornament-dot"></span>
+        <span class="ornament-line"></span>
+        <span class="ornament-icon">🌿</span>
+        <span class="ornament-line"></span>
+        <span class="ornament-dot"></span>
+      </div>
     </div>
     <div class="features-grid">
       <div class="feature-card">
-        <span class="feature-icon">🍛</span>
+        <div class="feature-icon-wrap">
+          <span class="feature-icon">🍛</span>
+        </div>
         <h3>Authentic Recipes</h3>
         <p>Traditional recipes passed down through generations of South Indian families.</p>
+        <div class="feature-corner feature-corner--tl"></div>
+        <div class="feature-corner feature-corner--br"></div>
       </div>
       <div class="feature-card">
-        <span class="feature-icon">🌿</span>
+        <div class="feature-icon-wrap">
+          <span class="feature-icon">🌿</span>
+        </div>
         <h3>Fresh Ingredients</h3>
         <p>Locally sourced produce and imported spices for the most authentic flavors.</p>
+        <div class="feature-corner feature-corner--tl"></div>
+        <div class="feature-corner feature-corner--br"></div>
       </div>
       <div class="feature-card">
-        <span class="feature-icon">👨‍🍳</span>
+        <div class="feature-icon-wrap">
+          <span class="feature-icon">👨‍🍳</span>
+        </div>
         <h3>Expert Chefs</h3>
         <p>Our chefs bring decades of experience from the finest kitchens of South India.</p>
+        <div class="feature-corner feature-corner--tl"></div>
+        <div class="feature-corner feature-corner--br"></div>
       </div>
       <div class="feature-card">
-        <span class="feature-icon">🚗</span>
+        <div class="feature-icon-wrap">
+          <span class="feature-icon">🚗</span>
+        </div>
         <h3>Fast Delivery</h3>
         <p>Order online and enjoy hot, fresh South Indian cuisine at your doorstep.</p>
+        <div class="feature-corner feature-corner--tl"></div>
+        <div class="feature-corner feature-corner--br"></div>
       </div>
     </div>
   </div>
@@ -60,13 +132,22 @@
     <div class="section-header">
       <span class="section-badge">Customer Favorites</span>
       <h2>Popular Dishes</h2>
-      <div class="spice-divider"><span>🌶️</span></div>
+      <div class="ornament-divider">
+        <span class="ornament-dot"></span>
+        <span class="ornament-line"></span>
+        <span class="ornament-icon">🌶️</span>
+        <span class="ornament-line"></span>
+        <span class="ornament-dot"></span>
+      </div>
     </div>
     <div class="dishes-grid">
-      @for (item of popularItems; track item.id) {
-        <div class="dish-card">
+      @for (item of popularItems; track item.id; let i = $index) {
+        <div class="dish-card" [class.dish-card--featured]="i === 0">
           <div class="dish-image">
             <img [src]="item.image" [alt]="item.name" loading="lazy">
+            <div class="dish-overlay">
+              <button class="btn btn-primary btn-sm" (click)="addToCart(item)">Add to Cart</button>
+            </div>
             @if (item.isVegetarian) {
               <span class="badge badge-veg">🌱 Veg</span>
             }
@@ -79,7 +160,7 @@
             <p>{{ item.description }}</p>
             <div class="dish-footer">
               <span class="dish-price">{{ item.price | currency }}</span>
-              <button class="btn btn-primary btn-sm" (click)="addToCart(item)">Add to Cart</button>
+              <button class="btn btn-primary btn-sm mobile-cart-btn" (click)="addToCart(item)">Add to Cart</button>
             </div>
           </div>
         </div>
@@ -93,6 +174,7 @@
 
 <!-- Culture Section -->
 <section class="culture section">
+  <div class="kolam-pattern"></div>
   <div class="container">
     <div class="culture-grid">
       <div class="culture-text">
@@ -103,29 +185,70 @@
         <a routerLink="/about" class="btn btn-primary">Learn Our Story →</a>
       </div>
       <div class="culture-cards">
-        <div class="culture-card"><span>🏛️</span><h4>Tamil Nadu</h4><p>Land of temples and dosas</p></div>
-        <div class="culture-card"><span>🥥</span><h4>Kerala</h4><p>God's own country cuisine</p></div>
-        <div class="culture-card"><span>🍚</span><h4>Hyderabad</h4><p>City of Nizami biryani</p></div>
-        <div class="culture-card"><span>🌶️</span><h4>Chettinad</h4><p>Spice capital of India</p></div>
+        <div class="culture-card">
+          <div class="culture-card-inner">
+            <span>🏛️</span>
+            <h4>Tamil Nadu</h4>
+            <p>Land of temples and dosas</p>
+          </div>
+        </div>
+        <div class="culture-card">
+          <div class="culture-card-inner">
+            <span>🥥</span>
+            <h4>Kerala</h4>
+            <p>God's own country cuisine</p>
+          </div>
+        </div>
+        <div class="culture-card">
+          <div class="culture-card-inner">
+            <span>🍚</span>
+            <h4>Hyderabad</h4>
+            <p>City of Nizami biryani</p>
+          </div>
+        </div>
+        <div class="culture-card">
+          <div class="culture-card-inner">
+            <span>🌶️</span>
+            <h4>Chettinad</h4>
+            <p>Spice capital of India</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- Wave Divider -->
+<div class="wave-divider wave-divider--dark">
+  <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+    <path d="M0,80 C360,20 720,100 1080,40 C1260,10 1380,50 1440,40 L1440,120 L0,120 Z"/>
+  </svg>
+</div>
+
 <!-- Testimonials -->
 <section class="testimonials section">
   <div class="container">
-    <div class="section-header">
+    <div class="section-header section-header--light">
       <span class="section-badge">What Our Guests Say</span>
       <h2>Testimonials</h2>
-      <div class="spice-divider"><span>⭐</span></div>
+      <div class="ornament-divider">
+        <span class="ornament-dot"></span>
+        <span class="ornament-line"></span>
+        <span class="ornament-icon">⭐</span>
+        <span class="ornament-line"></span>
+        <span class="ornament-dot"></span>
+      </div>
     </div>
     <div class="testimonials-grid">
       @for (t of testimonials; track t.name) {
         <div class="testimonial-card">
+          <div class="quote-mark">"</div>
           <div class="stars">⭐⭐⭐⭐⭐</div>
-          <p class="quote">"{{ t.text }}"</p>
-          <span class="author">— {{ t.name }}</span>
+          <p class="quote">{{ t.text }}</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">{{ t.name.charAt(0) }}</div>
+            <span class="author">{{ t.name }}</span>
+          </div>
         </div>
       }
     </div>
@@ -134,12 +257,16 @@
 
 <!-- CTA -->
 <section class="cta-section">
+  <div class="cta-pattern"></div>
   <div class="container">
-    <h2>Ready to Experience South India?</h2>
-    <p>Order online for pickup or delivery and enjoy authentic flavors at home.</p>
-    <div class="cta-actions">
-      <a routerLink="/order" class="btn btn-primary btn-lg">Order Now 🛒</a>
-      <a routerLink="/contact" class="btn btn-outline btn-lg">Contact Us</a>
+    <div class="cta-frame">
+      <div class="cta-arch"></div>
+      <h2>Ready to Experience South India?</h2>
+      <p>Order online for pickup or delivery and enjoy authentic flavors at home.</p>
+      <div class="cta-actions">
+        <a routerLink="/order" class="btn btn-primary btn-lg">Order Now 🛒</a>
+        <a routerLink="/contact" class="btn btn-outline btn-lg">Contact Us</a>
+      </div>
     </div>
   </div>
 </section>

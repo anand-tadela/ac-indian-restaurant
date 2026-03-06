@@ -1,42 +1,106 @@
+/* ============================================
+   HERO — Asymmetric split layout with mandala
+   ============================================ */
 .hero {
   position: relative;
   min-height: 100vh;
   display: flex;
   align-items: center;
-  background: linear-gradient(135deg, var(--dark-brown) 0%, var(--dark-brown-deep) 100%);
+  background: linear-gradient(160deg, var(--dark-brown) 0%, var(--dark-brown-deep) 60%, var(--dark-brown) 100%);
   overflow: hidden;
+}
 
-  .hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at 30% 50%, var(--overlay-accent) 0%, transparent 60%);
+.hero-pattern {
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  background-image:
+    radial-gradient(circle at 2px 2px, var(--gold) 1px, transparent 0);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+
+.hero-glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+
+  &--left {
+    top: -200px;
+    left: -200px;
+    background: var(--overlay-accent);
+  }
+  &--right {
+    bottom: -200px;
+    right: -100px;
+    background: var(--overlay-accent-subtle);
   }
 }
 
-.hero-content {
+.hero-grid {
   position: relative;
   z-index: 2;
-  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
   padding: 120px 24px 80px;
-  animation: fadeInUp 0.8s ease;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Hero Left — Text */
+.hero-left {
+  animation: slideInLeft 0.8s ease-out;
+}
+
+.hero-badge-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 24px 8px 12px;
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 50px;
+  margin-bottom: 28px;
+}
+
+.hero-lamp {
+  font-size: 1.5rem;
+  animation: flicker 3s infinite alternate;
 }
 
 .hero-badge {
-  display: inline-block;
-  padding: 8px 24px;
-  background: rgba(212, 175, 55, 0.15);
-  border: 1px solid rgba(212, 175, 55, 0.3);
-  border-radius: 50px;
   color: var(--gold);
-  font-size: 0.9rem;
-  margin-bottom: 24px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
 }
 
 .hero h1 {
-  font-size: 3.5rem;
   color: white;
-  margin-bottom: 20px;
-  line-height: 1.15;
+  margin-bottom: 24px;
+  line-height: 1.1;
+
+  .hero-welcome {
+    display: block;
+    font-size: 1.3rem;
+    font-family: 'Great Vibes', cursive;
+    color: var(--gold);
+    font-weight: 400;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+  }
+
+  .hero-brand {
+    display: block;
+    font-size: 3.8rem;
+    font-weight: 800;
+    line-height: 1.05;
+  }
 
   .gold {
     background: linear-gradient(135deg, var(--gold), var(--gold-light));
@@ -47,45 +111,138 @@
 }
 
 .hero-subtitle {
-  font-size: 1.15rem;
-  color: rgba(255, 255, 255, 0.7);
-  max-width: 600px;
-  margin: 0 auto 32px;
-  line-height: 1.7;
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.65);
+  max-width: 480px;
+  margin-bottom: 36px;
+  line-height: 1.8;
 }
 
 .hero-actions {
   display: flex;
   gap: 16px;
-  justify-content: center;
   flex-wrap: wrap;
   margin-bottom: 48px;
 }
 
 .hero-stats {
   display: flex;
-  justify-content: center;
-  gap: 48px;
+  align-items: center;
+  gap: 0;
 
   .stat {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 0 28px;
+  }
+
+  .stat-divider {
+    width: 1px;
+    height: 40px;
+    background: rgba(212, 175, 55, 0.3);
   }
 
   .stat-number {
     font-family: 'Playfair Display', serif;
-    font-size: 2rem;
+    font-size: 2.2rem;
     font-weight: 800;
     color: var(--gold);
+
+    sup, small {
+      font-size: 0.5em;
+      color: var(--gold-light);
+    }
   }
 
   .stat-label {
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.45);
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
+    margin-top: 2px;
   }
+}
+
+/* Hero Right — Mandala Decoration */
+.hero-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 1.2s ease-out 0.3s both;
+}
+
+.mandala-container {
+  position: relative;
+  width: 420px;
+  height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mandala-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid transparent;
+
+  &--outer {
+    width: 380px;
+    height: 380px;
+    border-color: rgba(212, 175, 55, 0.15);
+    border-style: dashed;
+    animation: mandalaRotate 60s linear infinite;
+  }
+
+  &--middle {
+    width: 280px;
+    height: 280px;
+    border-color: rgba(212, 175, 55, 0.25);
+    border-style: dotted;
+    border-width: 3px;
+    animation: mandalaRotate 40s linear infinite reverse;
+  }
+
+  &--inner {
+    width: 180px;
+    height: 180px;
+    border-color: rgba(212, 175, 55, 0.2);
+    border-style: solid;
+    animation: mandalaRotate 30s linear infinite;
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 8px;
+      border-radius: 50%;
+      border: 1px dashed rgba(212, 175, 55, 0.15);
+    }
+  }
+}
+
+.mandala-center {
+  position: relative;
+  z-index: 3;
+  width: 90px;
+  height: 90px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.2), rgba(212, 175, 55, 0.05));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  animation: flicker 3s infinite alternate;
+  box-shadow: 0 0 60px rgba(212, 175, 55, 0.2);
+}
+
+.float-item {
+  position: absolute;
+  font-size: 2rem;
+  animation: floatOrbit 8s ease-in-out infinite;
+  animation-delay: var(--delay);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(var(--angle)) translateX(var(--dist)) rotate(calc(-1 * var(--angle)));
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
 }
 
 .scroll-indicator {
@@ -94,24 +251,110 @@
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.35);
   font-size: 0.8rem;
+  z-index: 2;
 
   .scroll-arrow {
-    animation: pulse 1.5s infinite;
+    animation: bounceDown 2s infinite;
     font-size: 1.2rem;
     margin-top: 4px;
   }
 }
 
+/* ============================================
+   MARQUEE BANNER — Running dish names
+   ============================================ */
+.spice-marquee {
+  background: var(--gold);
+  padding: 14px 0;
+  overflow: hidden;
+  position: relative;
+  z-index: 3;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 30s linear infinite;
+
+  span {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--dark-brown-deep);
+    letter-spacing: 1px;
+    white-space: nowrap;
+    padding: 0 8px;
+  }
+}
+
+/* ============================================
+   WAVE DIVIDERS
+   ============================================ */
+.wave-divider {
+  position: relative;
+  margin-top: -2px;
+
+  svg {
+    display: block;
+    width: 100%;
+    height: 80px;
+
+    path {
+      fill: var(--cream);
+    }
+  }
+
+  &--top {
+    background: transparent;
+    svg path { fill: var(--cream); }
+  }
+
+  &--dark {
+    svg path { fill: var(--dark-brown); }
+  }
+}
+
+/* ============================================
+   ORNAMENT DIVIDER — Indian motif
+   ============================================ */
+.ornament-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 16px 0 0;
+}
+
+.ornament-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
+.ornament-line {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+}
+
+.ornament-icon {
+  font-size: 1rem;
+}
+
+/* ============================================
+   SECTION HEADER
+   ============================================ */
 .section-header {
   text-align: center;
-  margin-bottom: 48px;
+  margin-bottom: 56px;
 
   .section-badge {
     display: inline-block;
     padding: 6px 20px;
-    background: rgba(184, 134, 11, 0.1);
+    background: var(--accent-bg);
     border-radius: 50px;
     color: var(--primary);
     font-size: 0.85rem;
@@ -123,8 +366,20 @@
     font-size: 2.5rem;
     color: var(--dark-brown);
   }
+
+  &--light {
+    .section-badge {
+      background: rgba(212, 175, 55, 0.15);
+      color: var(--gold);
+    }
+    h2 { color: white; }
+    .ornament-dot { background: var(--gold); }
+  }
 }
 
+/* ============================================
+   FEATURES — Cards with decorative corners
+   ============================================ */
 .features-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -132,41 +387,92 @@
 }
 
 .feature-card {
+  position: relative;
   text-align: center;
-  padding: 40px 24px;
+  padding: 48px 24px 40px;
   background: var(--card-bg);
-  border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-  transition: all 0.3s ease;
+  border-radius: 2px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  transition: all 0.4s ease;
+  overflow: hidden;
 
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--primary));
+    border-radius: 0 0 3px 3px;
   }
 
-  .feature-icon {
-    font-size: 2.5rem;
-    display: block;
-    margin-bottom: 16px;
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.12);
   }
 
   h3 {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     margin-bottom: 8px;
     color: var(--dark-brown);
   }
 
   p {
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     color: var(--text-light);
-    line-height: 1.6;
+    line-height: 1.65;
   }
 }
 
+.feature-icon-wrap {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 20px;
+  background: var(--accent-bg);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+
+  .feature-card:hover & {
+    transform: scale(1.1) rotate(5deg);
+    background: var(--accent-bg-subtle);
+  }
+}
+
+.feature-icon {
+  font-size: 2rem;
+}
+
+.feature-corner {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+
+  &--tl {
+    top: 0;
+    left: 0;
+    border-top: 2px solid var(--gold);
+    border-left: 2px solid var(--gold);
+  }
+  &--br {
+    bottom: 0;
+    right: 0;
+    border-bottom: 2px solid var(--gold);
+    border-right: 2px solid var(--gold);
+  }
+}
+
+/* ============================================
+   POPULAR DISHES — Hover overlay style
+   ============================================ */
 .dishes-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 24px;
+  gap: 28px;
 }
 
 .dish-card {
@@ -174,19 +480,18 @@
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
 
   &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+
+    .dish-overlay { opacity: 1; }
+    .dish-image img { transform: scale(1.1); }
   }
 
   .dish-image {
-    height: 200px;
-    background: linear-gradient(135deg, var(--cream), var(--cream-dark));
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    height: 220px;
     position: relative;
     overflow: hidden;
 
@@ -194,18 +499,29 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.4s ease;
+      transition: transform 0.6s ease;
     }
-
-    &:hover img { transform: scale(1.08); }
 
     .badge {
       position: absolute;
       top: 12px;
-
+      z-index: 2;
       &.badge-veg { left: 12px; }
       &.badge-spicy { right: 12px; }
     }
+  }
+
+  .dish-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent 60%);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
   }
 
   .dish-info {
@@ -241,17 +557,41 @@
     font-weight: 700;
     color: var(--primary);
   }
+
+  .mobile-cart-btn {
+    display: inline-flex;
+  }
 }
 
 .section-cta {
   text-align: center;
-  margin-top: 40px;
+  margin-top: 48px;
+}
+
+/* ============================================
+   CULTURE — With kolam background pattern
+   ============================================ */
+.culture {
+  position: relative;
+  overflow: hidden;
+}
+
+.kolam-pattern {
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  background-image:
+    radial-gradient(circle, var(--dark-brown) 1px, transparent 1px),
+    radial-gradient(circle, var(--dark-brown) 1px, transparent 1px);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
+  pointer-events: none;
 }
 
 .culture-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 48px;
+  gap: 56px;
   align-items: center;
 }
 
@@ -259,7 +599,7 @@
   .section-badge {
     display: inline-block;
     padding: 6px 20px;
-    background: rgba(184, 134, 11, 0.1);
+    background: var(--accent-bg);
     border-radius: 50px;
     color: var(--primary);
     font-size: 0.85rem;
@@ -285,60 +625,205 @@
 .culture-cards {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  gap: 20px;
 }
 
 .culture-card {
   background: var(--card-bg);
-  border-radius: 16px;
-  padding: 24px;
-  text-align: center;
+  border-radius: 4px;
+  overflow: hidden;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
+  position: relative;
 
-  &:hover { transform: translateY(-3px); }
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+  }
 
-  span { font-size: 2rem; display: block; margin-bottom: 8px; }
-  h4 { font-size: 1rem; color: var(--dark-brown); margin-bottom: 4px; }
-  p { font-size: 0.8rem; color: var(--text-light); }
+  &:hover {
+    transform: translateY(-4px) rotate(1deg);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  }
+
+  .culture-card-inner {
+    padding: 28px 20px;
+    text-align: center;
+  }
+
+  span { font-size: 2.2rem; display: block; margin-bottom: 10px; }
+  h4 { font-size: 1rem; color: var(--dark-brown); margin-bottom: 6px; }
+  p { font-size: 0.82rem; color: var(--text-light); line-height: 1.5; }
+}
+
+/* ============================================
+   TESTIMONIALS — Dark section with quote marks
+   ============================================ */
+.testimonials {
+  background: linear-gradient(160deg, var(--dark-brown) 0%, var(--dark-brown-deep) 100%);
+  position: relative;
 }
 
 .testimonials-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 28px;
 }
 
 .testimonial-card {
-  background: var(--card-bg);
-  border-radius: 16px;
-  padding: 32px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(212, 175, 55, 0.12);
+  border-radius: 4px;
+  padding: 36px 28px 28px;
+  position: relative;
+  transition: all 0.3s ease;
 
-  .stars { margin-bottom: 12px; }
+  &:hover {
+    background: rgba(255, 255, 255, 0.09);
+    border-color: rgba(212, 175, 55, 0.25);
+    transform: translateY(-3px);
+  }
+
+  .quote-mark {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    color: var(--gold);
+    opacity: 0.3;
+    line-height: 1;
+    position: absolute;
+    top: 12px;
+    left: 20px;
+  }
+
+  .stars {
+    margin-bottom: 16px;
+    font-size: 0.85rem;
+  }
 
   .quote {
     font-style: italic;
-    color: #4a4a4a;
-    line-height: 1.7;
-    margin-bottom: 16px;
-    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.75;
+    margin-bottom: 20px;
+    font-size: 0.92rem;
+  }
+
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .author-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold), var(--primary));
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
   }
 
   .author {
     font-weight: 600;
-    color: var(--primary);
+    color: var(--gold);
     font-size: 0.9rem;
   }
 }
 
+/* ============================================
+   CTA — Decorative frame
+   ============================================ */
 .cta-section {
-  background: linear-gradient(135deg, var(--dark-brown), var(--dark-brown-deep));
-  padding: 80px 0;
+  background: linear-gradient(160deg, var(--dark-brown-deep), var(--dark-brown));
+  padding: 100px 0;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+}
 
-  h2 { font-size: 2.5rem; color: white; margin-bottom: 12px; }
-  p { color: rgba(255, 255, 255, 0.7); font-size: 1.1rem; margin-bottom: 32px; }
+.cta-pattern {
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  background-image:
+    radial-gradient(circle at 2px 2px, var(--gold) 1px, transparent 0);
+  background-size: 32px 32px;
+  pointer-events: none;
+}
+
+.cta-frame {
+  position: relative;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 60px 40px;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+
+  &::before, &::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+  }
+
+  &::before {
+    top: -1px;
+    left: -1px;
+    border-top: 3px solid var(--gold);
+    border-left: 3px solid var(--gold);
+  }
+
+  &::after {
+    bottom: -1px;
+    right: -1px;
+    border-bottom: 3px solid var(--gold);
+    border-right: 3px solid var(--gold);
+  }
+}
+
+.cta-arch {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 30px;
+  border-radius: 60px 60px 0 0;
+  background: var(--dark-brown-deep);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-bottom: none;
+
+  &::after {
+    content: '🪔';
+    position: absolute;
+    top: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.3rem;
+  }
+}
+
+.cta-section {
+  h2 {
+    font-size: 2.3rem;
+    color: white;
+    margin-bottom: 12px;
+  }
+
+  p {
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 1.05rem;
+    margin-bottom: 36px;
+  }
 
   .cta-actions {
     display: flex;
@@ -348,16 +833,89 @@
   }
 }
 
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+@keyframes mandalaRotate {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes floatOrbit {
+  0%, 100% { opacity: 0.8; transform: translate(-50%, -50%) rotate(var(--angle)) translateX(var(--dist)) rotate(calc(-1 * var(--angle))) translateY(0); }
+  50% { opacity: 1; transform: translate(-50%, -50%) rotate(var(--angle)) translateX(var(--dist)) rotate(calc(-1 * var(--angle))) translateY(-15px); }
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; filter: brightness(1); }
+  25% { opacity: 0.9; filter: brightness(1.1); }
+  50% { opacity: 1; filter: brightness(0.95); }
+  75% { opacity: 0.95; filter: brightness(1.05); }
+}
+
+@keyframes bounceDown {
+  0%, 100% { transform: translateY(0); opacity: 0.5; }
+  50% { transform: translateY(8px); opacity: 1; }
+}
+
+@keyframes marqueeScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 40px;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-subtitle { max-width: 100%; }
+  .hero-actions { justify-content: center; }
+  .hero-stats { justify-content: center; }
+
+  .hero h1 .hero-brand { font-size: 3rem; }
+
+  .mandala-container { width: 300px; height: 300px; }
+  .mandala-ring--outer { width: 280px; height: 280px; }
+  .mandala-ring--middle { width: 200px; height: 200px; }
+  .mandala-ring--inner { width: 130px; height: 130px; }
+}
+
 @media (max-width: 768px) {
-  .hero h1 { font-size: 2.2rem; }
+  .hero h1 .hero-brand { font-size: 2.4rem; }
+  .hero h1 .hero-welcome { font-size: 1.1rem; }
   .features-grid { grid-template-columns: 1fr 1fr; }
   .culture-grid { grid-template-columns: 1fr; }
-  .hero-stats { gap: 24px; }
+  .hero-stats { gap: 0; }
+  .hero-stats .stat { padding: 0 16px; }
   .section-header h2 { font-size: 2rem; }
-  .cta-section h2 { font-size: 2rem; }
+  .cta-section h2 { font-size: 1.8rem; }
+  .cta-frame { padding: 40px 24px; }
+
+  .hero-right { display: none; }
+
+  .dish-overlay { display: none; }
+  .mobile-cart-btn { display: inline-flex !important; }
 }
 
 @media (max-width: 480px) {
   .features-grid { grid-template-columns: 1fr; }
-  .hero h1 { font-size: 1.8rem; }
+  .hero h1 .hero-brand { font-size: 2rem; }
+  .culture-cards { grid-template-columns: 1fr; }
+  .hero-stats .stat { padding: 0 12px; }
+  .hero-stats .stat-number { font-size: 1.6rem; }
+}
+
+/* Hide desktop cart overlay button text on large screens where overlay works */
+@media (min-width: 769px) {
+  .mobile-cart-btn { display: none !important; }
 }
